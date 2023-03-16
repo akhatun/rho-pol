@@ -132,11 +132,23 @@ void BeautifyHistoCosTheta(TH1* histogram, int i){
   latex10->SetTextAlign(11);
   latex10->SetNDC();
   latex10->DrawLatex(0.31,0.94,"Pb-Pb #sqrt{#it{s}_{NN}} = 5.36 TeV");
-  latex10->DrawLatex(0.2,0.80, "Run 3 events corrected with Run 2 AxE" );
-  // if(i == 0) latex10->DrawLatex(0.2,0.72, "-1 < cos#theta < -0.7");
-  // if(i == 1) latex10->DrawLatex(0.2,0.72, "-0 7< cos#theta < -0.55");
-  // if(i == 2) latex10->DrawLatex(0.2,0.72, "-0 55< cos#theta < -0.45");
-  // if(i == 3) latex10->DrawLatex(0.2,0.72, "-0 55< cos#theta < -0.45");
+  latex10->DrawLatex(0.2,0.80, "Run 2 AxE" );
+  if(i == 0)  latex10->DrawLatex(0.2,0.72, "-1    < cos#theta < -0.7");
+  if(i == 1)  latex10->DrawLatex(0.2,0.72, "-0.7  < cos#theta < -0.55");
+  if(i == 2)  latex10->DrawLatex(0.2,0.72, "-0.55 < cos#theta < -0.45");
+  if(i == 3)  latex10->DrawLatex(0.2,0.72, "-0.45 < cos#theta < -0.35");
+  if(i == 4)  latex10->DrawLatex(0.2,0.72, "-0.35 < cos#theta < -0.25");
+  if(i == 5)  latex10->DrawLatex(0.2,0.72, "-0.25 < cos#theta < -0.15");
+  if(i == 6)  latex10->DrawLatex(0.2,0.72, "-0.15 < cos#theta < -0.05");
+  if(i == 7)  latex10->DrawLatex(0.2,0.72, "-0.05 < cos#theta <  0.");
+  if(i == 8)  latex10->DrawLatex(0.2,0.72, " 0.   < cos#theta <  0.05");
+  if(i == 9)  latex10->DrawLatex(0.2,0.72, " 0.05 < cos#theta <  0.15");
+  if(i == 10) latex10->DrawLatex(0.2,0.72, " 0.15 < cos#theta <  0.25");
+  if(i == 11) latex10->DrawLatex(0.2,0.72, " 0.25 < cos#theta <  0.35");
+  if(i == 12) latex10->DrawLatex(0.2,0.72, " 0.35 < cos#theta <  0.45");
+  if(i == 13) latex10->DrawLatex(0.2,0.72, " 0.45 < cos#theta <  0.55");
+  if(i == 14) latex10->DrawLatex(0.2,0.72, " 0.55 < cos#theta <  0.7");
+  if(i == 15) latex10->DrawLatex(0.2,0.72, " 0.7  < cos#theta <  1");
   gPad->SaveAs(Form("run2-MC/AxE/AxE-costheta-%i.pdf", i), "recreate");
 
 
@@ -157,11 +169,19 @@ void BeautifyHistoPhi(TH1* histogram, int i){
   latex10->SetTextAlign(11);
   latex10->SetNDC();
   latex10->DrawLatex(0.31,0.94,"Pb-Pb #sqrt{#it{s}_{NN}} = 5.36 TeV");
-  latex10->DrawLatex(0.2,0.80, "Run 3 events corrected with Run 2 AxE" );
-  // if(i == 0) latex10->DrawLatex(0.2,0.72, "-1 < cos#theta < -0.7");
-  // if(i == 1) latex10->DrawLatex(0.2,0.72, "-0 7< cos#theta < -0.55");
-  // if(i == 2) latex10->DrawLatex(0.2,0.72, "-0 55< cos#theta < -0.45");
-  // if(i == 3) latex10->DrawLatex(0.2,0.72, "-0 55< cos#theta < -0.45");
+  latex10->DrawLatex(0.2,0.80, "Run 2 AxE" );
+  if(i == 0)  latex10->DrawLatex(0.2,0.72, "0    < #varphi < 1#times#frac{2#pi}{12}");
+  if(i == 1)  latex10->DrawLatex(0.2,0.72, "1#times#frac{2#pi}{12}  < #varphi < 2#times#frac{2#pi}{12}");
+  if(i == 2)  latex10->DrawLatex(0.2,0.72, "2#times#frac{2#pi}{12}  < #varphi < 3#times#frac{2#pi}{12}");
+  if(i == 3)  latex10->DrawLatex(0.2,0.72, "3#times#frac{2#pi}{12}  < #varphi < 4#times#frac{2#pi}{12}");
+  if(i == 4)  latex10->DrawLatex(0.2,0.72, "4#times#frac{2#pi}{12}  < #varphi < 5#times#frac{2#pi}{12}");
+  if(i == 5)  latex10->DrawLatex(0.2,0.72, "5#times#frac{2#pi}{12}  < #varphi < 6#times#frac{2#pi}{12}");
+  if(i == 6)  latex10->DrawLatex(0.2,0.72, "6#times#frac{2#pi}{12}  < #varphi < 7#times#frac{2#pi}{12}");
+  if(i == 7)  latex10->DrawLatex(0.2,0.72, "7#times#frac{2#pi}{12}  < #varphi < 8#times#frac{2#pi}{12}");
+  if(i == 8)  latex10->DrawLatex(0.2,0.72, "8#times#frac{2#pi}{12}  < #varphi < 9#times#frac{2#pi}{12}");
+  if(i == 9)  latex10->DrawLatex(0.2,0.72, "9#times#frac{2#pi}{12}  < #varphi < 10#times#frac{2#pi}{12}");
+  if(i == 10) latex10->DrawLatex(0.2,0.72, "10#times#frac{2#pi}{12} < #varphi < 11#times#frac{2#pi}{12}");
+  if(i == 11) latex10->DrawLatex(0.2,0.72, "11#times#frac{2#pi}{12} < #varphi < 12#times#frac{2#pi}{12}");
   gPad->SaveAs(Form("run2-MC/AxE/AxE-phi-%i.pdf", i), "recreate");
 
 
