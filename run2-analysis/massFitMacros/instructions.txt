@@ -1,0 +1,30 @@
+Description of the folders---------
+binnedData:
+    it contains the file with the data in the format used by the macro that performs
+    the mass fits that is systematics_weighted.c
+    * 1phi_1pt.root contains the integrated data sample
+    * 15phi_1pt.root contains the data sample binned in 15 ranges of a variable phi (for more info 
+    look at one of my two talks at the UPCs meeting)
+    * hWeights.root contains an histogram used to re-weight the MC to take into
+    account differences in the pt spectra of data and MC
+
+libraries
+    it contains some .h file needed to read the imput files and to save the results
+
+-----------------
+
+systematics_weighted.c
+it is the macro used to fit the mass distribution(s) -> in this macro it is not implemented the contribution from the omega
+Once compiled run it using massFitInBin()
+    the function can take 3 argument: the first is a string that does selection on neutrons
+        "noSelection" -> if you do not want to look at the neutrons emitted
+        "0n0n" -> no neutrons on both side of the IP
+        "Xn0n" -> neutron(s) only at one side of the IP
+        "XnXn" -> neutron(s) at both side of the IP
+    the second argument is the number of phi bins, with the file attached this number could be 1 (to use 1phi_1pt.root) or 15 (to use 15phi_1pt.root)
+    the third argument is the number of pt bins and needs to be 1
+
+    massFitWithOmega.c
+    this macro is similar to systematics_weighted.c and works in the same way, but the fit function include also the contribution from
+    the omega. Unfortunately I am changing the architectury of the macro used to fit and this macro is not working at the moment, but it worked
+    so you can copy the fit function

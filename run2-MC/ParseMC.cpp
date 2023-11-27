@@ -554,11 +554,15 @@ void ParseMC(){
 
 
 
-  TFile *SavingFile = new TFile("run2-MC/CohHe.root", "RECREATE");
+  TFile *SavingFile = new TFile("run2-MC/CohHe-2.root", "RECREATE");
   MRecH->Write();
   MGenH->Write();
   MRecMineH->Write();
   MGenMineH->Write();
+  CosThetaGen2H->Write();
+  PhiGen2H->Write();
+
+
 
   PhiRecH->Write();
   PhiRecHH->Write();

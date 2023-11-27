@@ -247,6 +247,10 @@ void ParseMC(){
   TH1F *MGenPhi_15 = new TH1F("MGenPhi_15", "MGenPhi_15", 100, 0., 2.);
 
 
+  TH1F *QPlusGen  = new TH1F("QPlusGen",  "QPlusGen",  1000, -499.5, 499.5);
+  TH1F *QMinusGen = new TH1F("QMinusGen", "QMinusGen", 1000, -499.5, 499.5);
+  TH1F *QPlusRec  = new TH1F("QPlusRec",  "QPlusRec",  1000, -499.5, 499.5);
+  TH1F *QMinusRec = new TH1F("QMinusRec", "QMinusRec", 1000, -499.5, 499.5);
 
 
   TH1F*** InvMassH;
@@ -288,12 +292,17 @@ void ParseMC(){
       pZgen2[1] = SinglePtgen2[1] * TMath::SinH(SingleEtagen2[1]);
       EnergyGen2[0] = TMath::Sqrt( pXgen2[0]*pXgen2[0] + pYgen2[0]*pYgen2[0] + pZgen2[0]*pZgen2[0] + TDatabasePDG::Instance()->GetParticle(211)->Mass()*TDatabasePDG::Instance()->GetParticle(211)->Mass());
       EnergyGen2[1] = TMath::Sqrt( pXgen2[1]*pXgen2[1] + pYgen2[1]*pYgen2[1] + pZgen2[1]*pZgen2[1] + TDatabasePDG::Instance()->GetParticle(211)->Mass()*TDatabasePDG::Instance()->GetParticle(211)->Mass());
-      if(Qgen[1] < -0.5 && Qgen[0] > 0.5){
+      if(Qgen[0] < -0.5 && Qgen[1] > 0.5){
         piPlusMC2.SetPxPyPzE(  pXgen2[1],pYgen2[1],pZgen2[1],EnergyGen2[1]);
         piMinusMC2.SetPxPyPzE( pXgen2[0],pYgen2[0],pZgen2[0],EnergyGen2[0]);
-      } else if(Qgen[0] < -0.5 && Qgen[1] > 0.5){
+        QPlusGen->Fill(Qgen[1]);
+        QMinusGen->Fill(Qgen[0]);
+      } else if(Qgen[1] < -0.5 && Qgen[0] > 0.5){
         piPlusMC2.SetPxPyPzE(  pXgen2[0],pYgen2[0],pZgen2[0],EnergyGen2[0]);
         piMinusMC2.SetPxPyPzE( pXgen2[1],pYgen2[1],pZgen2[1],EnergyGen2[1]);
+        QPlusGen->Fill(Qgen[0]);
+        QMinusGen->Fill(Qgen[1]);
+
       }
       rhoMC2 += piPlusMC2;
       rhoMC2 += piMinusMC2;
@@ -377,11 +386,15 @@ void ParseMC(){
       piMinusMC.SetPxPyPzE( pXgen[0],pYgen[0],pZgen[0],EnergyGen[0]);
       // piPlusMC2.SetPxPyPzE(  pXgen2[1],pYgen2[1],pZgen2[1],EnergyGen2[1]);
       // piMinusMC2.SetPxPyPzE( pXgen2[0],pYgen2[0],pZgen2[0],EnergyGen2[0]);
+      QPlusRec->Fill(Qrec[1]);
+      QMinusRec->Fill(Qrec[0]);
     } else if(Qrec[1] < -0.5 && Qrec[0] > 0.5){
       piPlus.SetPxPyPzE(  SinglePXrec[0],SinglePYrec[0],SinglePZrec[0],EnergyRec[0]);
       piMinus.SetPxPyPzE( SinglePXrec[1],SinglePYrec[1],SinglePZrec[1],EnergyRec[1]);
       piPlusMC.SetPxPyPzE(  pXgen[0],pYgen[0],pZgen[0],EnergyGen[0]);
       piMinusMC.SetPxPyPzE( pXgen[1],pYgen[1],pZgen[1],EnergyGen[1]);
+      QPlusRec->Fill(Qrec[0]);
+      QMinusRec->Fill(Qrec[1]);
       // piPlusMC2.SetPxPyPzE(  pXgen2[0],pYgen2[0],pZgen2[0],EnergyGen2[0]);
       // piMinusMC2.SetPxPyPzE( pXgen2[1],pYgen2[1],pZgen2[1],EnergyGen2[1]);
     }
@@ -563,6 +576,12 @@ void ParseMC(){
   FullInvMassHgen->Write();
   PhiRecMinusGenH->Write();
   CosThetaRecMinusGenH->Write();
+  QPlusGen->Write();
+  QMinusGen->Write();
+  QPlusRec->Write();
+  QMinusRec->Write();
+  CosThetaGen2H->Write();
+  PhiGen2H->Write();
 
 
   MRecCosTheta_0->Write();
